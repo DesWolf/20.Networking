@@ -1,45 +1,64 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  test
 //
-//  Created by Максим Окунеев on 12/19/19.
+//  Created by Максим Окунеев on 12/20/19.
 //  Copyright © 2019 Максим Окунеев. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController{
+class ViewController: UIViewController {
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var label: UILabel!
-    @IBOutlet var getImageButton: UIButton!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        activityIndicator.isHidden = true
-        activityIndicator.hidesWhenStopped = true
-        fetchImage()
+    @IBAction func getRequest(_ sender: Any) {
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
         
-    }
-   
-    func fetchImage(){
-        
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        
-        guard let url = URL(string: "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg") else { return }
-    
         let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, error) in
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.imageView.image = image
-                }
+        session.dataTask(with: url) { (data, responce, error) in
+         
+            guard
+                let responce = responce,
+                let data = data
+                else { return }
+            print(responce)
+            print(data)
+            do {
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            print(json)
+            } catch {
+            print(error)
             }
-        } .resume()
+            }.resume()
+    }
+    
+    @IBAction func postRequest(_ sender: Any) {
+        
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+        
+        let userdata = ["Course": "Networking", "Lessons": "GET and POST Request"]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: userdata, options: [])
+            else { return }
+    
+        request.httpBody = httpBody
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) {( data, response, error ) in
+        
+            guard let response = response, let data = data else { return }
+            print(response)
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            }
+            catch {
+                print(error)
+            }
+        }.resume()
     }
 }
-
- 
