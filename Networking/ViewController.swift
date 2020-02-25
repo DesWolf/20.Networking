@@ -11,17 +11,14 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBAction func getRequest(_ sender: Any) {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else { return }
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, responce, error) in
          
-            guard
-                let responce = responce,
-                let data = data
-                else { return }
-            print(responce)
-            print(data)
+            guard let responce = responce, let data = data else { return }
+           // print(responce)
+           // print(data)
             do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
             print(json)
@@ -33,7 +30,7 @@ class ViewController: UIViewController {
     
     @IBAction func postRequest(_ sender: Any) {
         
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else { return }
         
         let userdata = ["Course": "Networking", "Lessons": "GET and POST Request"]
         
@@ -50,7 +47,7 @@ class ViewController: UIViewController {
         session.dataTask(with: request) {( data, response, error ) in
         
             guard let response = response, let data = data else { return }
-            print(response)
+            //print(response)
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])

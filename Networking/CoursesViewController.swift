@@ -19,7 +19,9 @@ class CoursesViewController: UIViewController {
     func fetchData() {
         
         //let jsonURLString =  "https://swiftbook.ru//wp-content/uploads/api/api_course"
-        let jsonURLString =  "https://swiftbook.ru//wp-content/uploads/api/api_courses"
+        //let jsonURLString =  "https://swiftbook.ru//wp-content/uploads/api/api_courses"
+        let jsonURLString =  "https://swiftbook.ru//wp-content/uploads/api/api_website_description"
+        
         guard let url = URL(string: jsonURLString) else { return }
         
         URLSession.shared.dataTask(with: url) {(data, response, errror) in
@@ -27,8 +29,8 @@ class CoursesViewController: UIViewController {
             guard let data = data else { return }
         
             do{
-                let courses = try JSONDecoder().decode([Course].self, from: data)
-                print(courses)
+                let websiteDescription = try JSONDecoder().decode(WebsiteDescription.self, from: data)
+                print("\(websiteDescription.websiteName ?? "") \(websiteDescription.websiteDescription ?? "")")
             } catch let error {
                 print("Error serrialization Jason", error)
             }
