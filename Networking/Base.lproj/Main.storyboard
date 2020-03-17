@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nyj-4F-43a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nyj-4F-43a">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -173,7 +173,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="vo8-ff-cG0" customClass="TableViewCell" customModule="Networking" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="vo8-ff-cG0" customClass="TableViewCell" customModule="Netirking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vo8-ff-cG0" id="1QA-Tb-THn">
@@ -231,10 +231,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="courseImage" destination="876-7Y-emP" id="1OP-qA-gI5"/>
-                                            <outlet property="courseNameLabel" destination="aWe-76-Qb1" id="gDx-Ui-vdL"/>
-                                            <outlet property="numberOfLessons" destination="R4f-dS-YxQ" id="I8A-Dt-jOo"/>
-                                            <outlet property="numberOfTests" destination="wP1-t2-ech" id="wF4-4K-eXQ"/>
+                                            <outlet property="courseImage" destination="876-7Y-emP" id="CpA-l4-P3W"/>
+                                            <outlet property="courseNameLabel" destination="aWe-76-Qb1" id="C4V-Dp-d2f"/>
+                                            <outlet property="numberOfLessons" destination="R4f-dS-YxQ" id="dce-DL-cbP"/>
+                                            <outlet property="numberOfTests" destination="wP1-t2-ech" id="6pP-7H-Y8W"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -298,7 +298,7 @@
                     <navigationItem key="navigationItem" id="eAm-Ub-WJi"/>
                     <connections>
                         <outlet property="progressView" destination="FjE-El-M0f" id="SG3-yZ-5xU"/>
-                        <outlet property="webView" destination="gma-x0-ljx" id="oPJ-5d-t8G"/>
+                        <outlet property="webView" destination="gma-x0-ljx" id="Ykf-O0-cnP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6G-ca-8zl" userLabel="First Responder" sceneMemberID="firstResponder"/>
