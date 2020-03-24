@@ -10,6 +10,8 @@ import UIKit
 
 class ImageViewController: UIViewController{
     
+    private let url = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
     @IBOutlet var getImageButton: UIButton!
@@ -20,7 +22,6 @@ class ImageViewController: UIViewController{
         activityIndicator.isHidden = true
         activityIndicator.hidesWhenStopped = true
         fetchImage()
-        
     }
    
     func fetchImage(){
@@ -28,17 +29,10 @@ class ImageViewController: UIViewController{
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        guard let url = URL(string: "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg") else { return }
-    
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, error) in
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.imageView.image = image
-                }
+        NetworkManager.downloadImage(url: url) { (image) in
+            self.activityIndicator.stopAnimating()
+            self.imageView.image = image
             }
-        } .resume()
     }
 }
 
