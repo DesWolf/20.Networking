@@ -13,6 +13,7 @@
 		9E55141E23AB580300D5D9E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E55141C23AB580300D5D9E7 /* Main.storyboard */; };
 		9E55142023AB580900D5D9E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E55141F23AB580900D5D9E7 /* Assets.xcassets */; };
 		9E55142323AB580900D5D9E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E55142123AB580900D5D9E7 /* LaunchScreen.storyboard */; };
+		9E9E315F2431D98F00CE715B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9E315E2431D98F00CE715B /* DataProvider.swift */; };
 		9EE1283B2420C19E009F32DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1283A2420C19E009F32DC /* MainViewController.swift */; };
 		9EE1283D2420C27E009F32DC /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1283C2420C27E009F32DC /* CollectionViewCell.swift */; };
 		9EE128442420D2BF009F32DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE128432420D2BF009F32DC /* NetworkManager.swift */; };
@@ -34,6 +35,7 @@
 		9E55141F23AB580900D5D9E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E55142223AB580900D5D9E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E55142423AB580900D5D9E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E9E315E2431D98F00CE715B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		9EE1283A2420C19E009F32DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9EE1283C2420C27E009F32DC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9EE128432420D2BF009F32DC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				9EE128432420D2BF009F32DC /* NetworkManager.swift */,
 				9EE128452421110B009F32DC /* ImageProperties.swift */,
+				9E9E315E2431D98F00CE715B /* DataProvider.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				9EF3873C23ACE88E007FD21D /* CoursesViewController.swift in Sources */,
 				9EE1283B2420C19E009F32DC /* MainViewController.swift in Sources */,
 				9EE1283D2420C27E009F32DC /* CollectionViewCell.swift in Sources */,
+				9E9E315F2431D98F00CE715B /* DataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
