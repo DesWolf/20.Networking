@@ -15,20 +15,19 @@ class DataProvider: NSObject {
     var onProgress: ((Double) -> ())?
     
     private lazy var bgSession: URLSession = {
-        let config = URLSessionConfiguration.background(withIdentifier: "Networking")
-        config.isDiscretionary = true // Запуск задачи в оптимальное время (по умолчанию false)
-        config.sessionSendsLaunchEvents = true // Время ожидания в сети в сек
-        config.waitsForConnectivity = true // Ожидание подключения сети (по умолчанию true)
-        config.sessionSendsLaunchEvents = true //
+        let config = URLSessionConfiguration.background(withIdentifier: "ru.swiftbook.Networking")
+//        config.isDiscretionary = true
+        config.sessionSendsLaunchEvents = true
         return URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }()
     
     func startDownload() {
+        
         if let url = URL(string: "https://speed.hetzner.de/100MB.bin") {
             downloadTask = bgSession.downloadTask(with: url)
-            downloadTask.earliestBeginDate = Date().addingTimeInterval(1)
+            downloadTask.earliestBeginDate = Date().addingTimeInterval(3)
             downloadTask.countOfBytesClientExpectsToSend = 512
-            downloadTask.countOfBytesClientExpectsToReceive = 100 * 1024 * 1024 // 100MB
+            downloadTask.countOfBytesClientExpectsToReceive = 100 * 1024 * 1024
             downloadTask.resume()
         }
     }
@@ -36,6 +35,7 @@ class DataProvider: NSObject {
     func stopDownload() {
         downloadTask.cancel()
     }
+
 }
 
 extension DataProvider: URLSessionDelegate {
@@ -53,11 +53,12 @@ extension DataProvider: URLSessionDelegate {
     }
 }
 
-// MARK: - URLSessionDownloadDelegate
 extension DataProvider: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
         print("Did finish downloading: \(location.absoluteString)")
+        
         DispatchQueue.main.async {
             self.fileLocation?(location)
         }
@@ -73,17 +74,9 @@ extension DataProvider: URLSessionDownloadDelegate {
         
         let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
         print("Download progress: \(progress)")
+        
         DispatchQueue.main.async {
             self.onProgress?(progress)
         }
-    }
-}
-
-extension DataProvider: URLSessionTaskDelegate {
-    
-    //Восстановление соединения
-    func urlSession(_ session: URLSession, taskIsWaitingForConnectivity task: URLSessionTask) {
-        
-        // Ожидание соединения, обновление интерфейса и прочее
     }
 }

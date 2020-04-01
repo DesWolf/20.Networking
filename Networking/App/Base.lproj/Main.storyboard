@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iBi-PT-1lW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iBi-PT-1lW">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -98,8 +98,10 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Controls" id="6Eg-Ae-rFZ"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowImage" id="Kws-fr-J0c"/>
-                        <segue destination="4R7-5k-gCf" kind="show" identifier="OurCourses" id="OFZ-gy-g4y"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowImage" id="7du-Gq-R9z"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ResponseData" id="6fG-3B-0sx"/>
+                        <segue destination="4R7-5k-gCf" kind="show" identifier="OurCourses" id="CUh-Fp-AE6"/>
+                        <segue destination="4R7-5k-gCf" kind="show" identifier="OurCoursesWithAlamofire" id="5II-cN-a4b"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5K-pJ-vVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -200,7 +202,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Our Curses" id="AxD-YS-vnu"/>
                     <connections>
-                        <outlet property="tableView" destination="jvH-x6-HUu" id="UQW-F5-Ghe"/>
+                        <outlet property="tableView" destination="jvH-x6-HUu" id="Kka-1r-iB9"/>
                         <segue destination="NdO-Ss-SNP" kind="show" identifier="Description" id="Gut-Rm-eZT"/>
                     </connections>
                 </viewController>
@@ -269,4 +271,8 @@
             <point key="canvasLocation" x="-804" y="262.21889055472263"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5II-cN-a4b"/>
+        <segue reference="6fG-3B-0sx"/>
+    </inferredMetricsTieBreakers>
 </document>
