@@ -18,7 +18,9 @@ enum Actions: String, CaseIterable {
     case uploadImage = "Upload Image"
     case downloadFile = "Download File"
     case ourCoursesAlamofire = "Our Courses (Alamofire)"
-    case responseData = "responseData"
+    case responceData = "ResponceData"
+    case responceString = "ResponceString"
+    case responce = "Responce"
 }
 
 private let reuseIdentifier = "Cell"
@@ -132,8 +134,13 @@ class MainViewController: UICollectionViewController {
             dataProvider.startDownload()
         case .ourCoursesAlamofire:
             performSegue(withIdentifier: "OurCoursesWithAlamofire", sender: self)
-        case .responseData:
+        case .responceData:
             performSegue(withIdentifier: "ResponseData", sender: self)
+            AlamofireNetworkRequest.responceData(url: swiftbookApi)
+        case .responceString:
+            AlamofireNetworkRequest.responceString(url: swiftbookApi)
+        case .responce:
+            AlamofireNetworkRequest.responce(url: swiftbookApi)
         }
     }
     

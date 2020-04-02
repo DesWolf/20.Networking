@@ -31,4 +31,38 @@ class AlamofireNetworkRequest {
             }
         }
     }
+    
+    static func responceData(url: String) {
+        
+        AF.request(url).responseData { (responceData) in
+            switch responceData.result {
+            case .success(let data):
+                guard let string = String(data: data, encoding: .utf8) else { return }
+                print(string)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    static func responceString(url: String) {
+        AF.request(url).responseString { (responceString) in
+            switch responceString.result {
+            case .success(let string):
+                print(string)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    static func responce(url: String) {
+        AF.request(url).response { (responce) in
+            guard
+                let data = responce.data  ,
+                let string = String(data:data, encoding: .utf8)
+                else { return }
+            print(string)
+        }
+    }
 }
