@@ -22,14 +22,30 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="MUo-rg-P5g">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFg-8y-OXB">
+                                <rect key="frame" x="145" y="388" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SAg-Ul-fyM">
+                                <rect key="frame" x="112" y="449" width="151" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="151" id="zwr-58-y2v"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="SAg-Ul-fyM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BTz-Iz-QfF"/>
                             <constraint firstAttribute="bottom" secondItem="lUg-zq-HAe" secondAttribute="bottom" id="KDr-4f-7uN"/>
                             <constraint firstItem="lUg-zq-HAe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z5H-sa-MEJ"/>
+                            <constraint firstItem="XFg-8y-OXB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c6u-QM-bgS"/>
                             <constraint firstItem="MUo-rg-P5g" firstAttribute="centerY" secondItem="lUg-zq-HAe" secondAttribute="centerY" id="cjs-tM-oO6"/>
+                            <constraint firstItem="SAg-Ul-fyM" firstAttribute="top" secondItem="XFg-8y-OXB" secondAttribute="bottom" constant="40" id="juC-vo-XNb"/>
                             <constraint firstItem="MUo-rg-P5g" firstAttribute="centerX" secondItem="lUg-zq-HAe" secondAttribute="centerX" id="rpm-o2-bLy"/>
                             <constraint firstItem="lUg-zq-HAe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vV8-2d-TtX"/>
+                            <constraint firstItem="XFg-8y-OXB" firstAttribute="top" secondItem="MUo-rg-P5g" secondAttribute="bottom" constant="44.5" id="yeY-g4-7fq"/>
                             <constraint firstItem="lUg-zq-HAe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yv1-6Z-ciR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -37,7 +53,9 @@
                     <navigationItem key="navigationItem" id="hos-Oe-6DF"/>
                     <connections>
                         <outlet property="activityIndicator" destination="MUo-rg-P5g" id="pfA-TK-orh"/>
+                        <outlet property="completedLabel" destination="XFg-8y-OXB" id="NPh-GH-icl"/>
                         <outlet property="imageView" destination="lUg-zq-HAe" id="bzC-S4-SG2"/>
+                        <outlet property="progressView" destination="SAg-Ul-fyM" id="GLR-4a-Sxs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,6 +120,7 @@
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ResponseData" id="6fG-3B-0sx"/>
                         <segue destination="4R7-5k-gCf" kind="show" identifier="OurCourses" id="CUh-Fp-AE6"/>
                         <segue destination="4R7-5k-gCf" kind="show" identifier="OurCoursesWithAlamofire" id="5II-cN-a4b"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LargeImage" id="vos-9n-qqB"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5K-pJ-vVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -273,6 +292,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5II-cN-a4b"/>
-        <segue reference="6fG-3B-0sx"/>
+        <segue reference="vos-9n-qqB"/>
     </inferredMetricsTieBreakers>
 </document>
