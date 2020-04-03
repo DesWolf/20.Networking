@@ -121,11 +121,13 @@
                         <segue destination="4R7-5k-gCf" kind="show" identifier="OurCourses" id="CUh-Fp-AE6"/>
                         <segue destination="4R7-5k-gCf" kind="show" identifier="OurCoursesWithAlamofire" id="5II-cN-a4b"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="LargeImage" id="vos-9n-qqB"/>
+                        <segue destination="4R7-5k-gCf" kind="show" identifier="postRequest" id="fsg-Mf-aLj"/>
+                        <segue destination="4R7-5k-gCf" kind="show" identifier="putRequest" id="vaY-VI-G48"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5K-pJ-vVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.19999999999999" y="262.21889055472263"/>
+            <point key="canvasLocation" x="-84" y="262"/>
         </scene>
         <!--Our Curses-->
         <scene sceneID="Obr-0y-GVu">
@@ -291,7 +293,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5II-cN-a4b"/>
+        <segue reference="vaY-VI-G48"/>
         <segue reference="vos-9n-qqB"/>
     </inferredMetricsTieBreakers>
 </document>
