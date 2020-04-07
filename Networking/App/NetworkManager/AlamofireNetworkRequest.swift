@@ -98,7 +98,7 @@ class AlamofireNetworkRequest {
         guard let url = URL(string: url) else { return }
         let userData: [String: Any] = ["name": "Network Request",
                                        "link": "http://swiftbook.ru/contents/oour-first-applications/",
-                                        "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png",
+                                       "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png",
                                        "numberOfLessons": "18",
                                        "numberOfTests": "10"]
         AF.request(url, method: .post, parameters: userData).responseJSON { (responceJSON) in
@@ -109,8 +109,8 @@ class AlamofireNetworkRequest {
             case.success(let value):
                 print(value)
                 guard let jsonObject = value as? [String: Any],
-                let course = Course(json: jsonObject)
-                else { return }
+                    let course = Course(json: jsonObject)
+                    else { return }
                 var courses = [Course]()
                 courses.append(course)
                 completion(courses)
@@ -121,28 +121,29 @@ class AlamofireNetworkRequest {
     }
     
     static func putRequest(url: String, completion: @escaping (_ courses: [Course])->()) {
-           guard let url = URL(string: url) else { return }
-           let userData: [String: Any] = ["name": "Network Request",
-                                          "link": "http://swiftbook.ru/contents/oour-first-applications/",
-                                          "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png",
-                                          "numberOfLessons": "18",
-                                          "numberOfTests": "10"]
-           AF.request(url, method: .put, parameters: userData).responseJSON { (responceJSON) in
-               guard let statusCode = responceJSON.response?.statusCode else { return }
-               print("ststusCode", statusCode)
-               
-               switch responceJSON.result {
-               case.success(let value):
-                   print(value)
-                   guard let jsonObject = value as? [String: Any],
-                   let course = Course(json: jsonObject)
-                   else { return }
-                   var courses = [Course]()
-                   courses.append(course)
-                   completion(courses)
-               case .failure(let error):
-                   print(error)
-               }
-           }
-       }
+        guard let url = URL(string: url) else { return }
+        let userData: [String: Any] = ["name": "Network Request",
+                                       "link": "http://swiftbook.ru/contents/oour-first-applications/",
+                                       "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png",
+                                       "numberOfLessons": "18",
+                                       "numberOfTests": "10"]
+        AF.request(url, method: .put, parameters: userData).responseJSON { (responceJSON) in
+            guard let statusCode = responceJSON.response?.statusCode else { return }
+            print("ststusCode", statusCode)
+            
+            switch responceJSON.result {
+            case.success(let value):
+                print(value)
+                guard let jsonObject = value as? [String: Any],
+                    let course = Course(json: jsonObject)
+                    else { return }
+                var courses = [Course]()
+                courses.append(course)
+                completion(courses)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }

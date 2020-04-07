@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E4A6871243B8A29007FBFBF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A6870243B8A29007FBFBF /* LoginViewController.swift */; };
 		9E55141723AB580300D5D9E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55141623AB580300D5D9E7 /* AppDelegate.swift */; };
-		9E55141923AB580300D5D9E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55141823AB580300D5D9E7 /* SceneDelegate.swift */; };
 		9E55141B23AB580300D5D9E7 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55141A23AB580300D5D9E7 /* ImageViewController.swift */; };
 		9E55141E23AB580300D5D9E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E55141C23AB580300D5D9E7 /* Main.storyboard */; };
 		9E55142023AB580900D5D9E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E55141F23AB580900D5D9E7 /* Assets.xcassets */; };
 		9E55142323AB580900D5D9E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E55142123AB580900D5D9E7 /* LaunchScreen.storyboard */; };
 		9E9E315F2431D98F00CE715B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9E315E2431D98F00CE715B /* DataProvider.swift */; };
 		9EA1461F243498BC002A8AF6 /* AlamofireNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1461E243498BC002A8AF6 /* AlamofireNetworkRequest.swift */; };
+		9ECF1E3E243C8EB30062C379 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF1E3D243C8EB30062C379 /* Extentions.swift */; };
+		9ECF1E42243CD2400062C379 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF1E41243CD2400062C379 /* UserProfileVC.swift */; };
 		9EE1283B2420C19E009F32DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1283A2420C19E009F32DC /* MainViewController.swift */; };
 		9EE1283D2420C27E009F32DC /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1283C2420C27E009F32DC /* CollectionViewCell.swift */; };
 		9EE128442420D2BF009F32DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE128432420D2BF009F32DC /* NetworkManager.swift */; };
@@ -30,9 +32,10 @@
 
 /* Begin PBXFileReference section */
 		122E82231199C54D9E0F3B0C /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
+		9E4A6870243B8A29007FBFBF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9E4A6872243B8AC0007FBFBF /* NetirkingRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetirkingRelease.entitlements; sourceTree = "<group>"; };
 		9E55141323AB580300D5D9E7 /* Netirking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netirking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E55141623AB580300D5D9E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9E55141823AB580300D5D9E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9E55141A23AB580300D5D9E7 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		9E55141D23AB580300D5D9E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E55141F23AB580900D5D9E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +43,8 @@
 		9E55142423AB580900D5D9E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E9E315E2431D98F00CE715B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		9EA1461E243498BC002A8AF6 /* AlamofireNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkRequest.swift; sourceTree = "<group>"; };
+		9ECF1E3D243C8EB30062C379 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		9ECF1E41243CD2400062C379 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		9EE1283A2420C19E009F32DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9EE1283C2420C27E009F32DC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9EE128432420D2BF009F32DC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -86,6 +91,7 @@
 		9E55140A23AB580300D5D9E7 = {
 			isa = PBXGroup;
 			children = (
+				9E4A6872243B8AC0007FBFBF /* NetirkingRelease.entitlements */,
 				9E55141523AB580300D5D9E7 /* Networking */,
 				9EF3873923ACE5C8007FD21D /* Default-568h@2x.png */,
 				9E55141423AB580300D5D9E7 /* Products */,
@@ -106,14 +112,33 @@
 			isa = PBXGroup;
 			children = (
 				9EE128412420C3C0009F32DC /* App */,
+				9ECF1E40243C8EEB0062C379 /* FBUserAutorization */,
 				9EE128402420C3A1009F32DC /* ImageScreen */,
 				9EE1283F2420C362009F32DC /* Courses */,
 				9EE1283E2420C2AB009F32DC /* WebView */,
-				9E55141F23AB580900D5D9E7 /* Assets.xcassets */,
-				9E55142123AB580900D5D9E7 /* LaunchScreen.storyboard */,
+				9ECF1E3F243C8ED50062C379 /* Support */,
 				9E55142423AB580900D5D9E7 /* Info.plist */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		9ECF1E3F243C8ED50062C379 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				9ECF1E3D243C8EB30062C379 /* Extentions.swift */,
+				9E55141F23AB580900D5D9E7 /* Assets.xcassets */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		9ECF1E40243C8EEB0062C379 /* FBUserAutorization */ = {
+			isa = PBXGroup;
+			children = (
+				9E4A6870243B8A29007FBFBF /* LoginViewController.swift */,
+				9ECF1E41243CD2400062C379 /* UserProfileVC.swift */,
+			);
+			name = FBUserAutorization;
+			path = App;
 			sourceTree = "<group>";
 		};
 		9EE1283E2420C2AB009F32DC /* WebView */ = {
@@ -147,9 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				9E55141623AB580300D5D9E7 /* AppDelegate.swift */,
-				9E55141823AB580300D5D9E7 /* SceneDelegate.swift */,
 				9EE1283A2420C19E009F32DC /* MainViewController.swift */,
 				9EE1283C2420C27E009F32DC /* CollectionViewCell.swift */,
+				9E55142123AB580900D5D9E7 /* LaunchScreen.storyboard */,
 				9E55141C23AB580300D5D9E7 /* Main.storyboard */,
 				9EE128422420D2A5009F32DC /* NetworkManager */,
 			);
@@ -285,10 +310,12 @@
 			files = (
 				9EE128442420D2BF009F32DC /* NetworkManager.swift in Sources */,
 				9EF3874223ACF381007FD21D /* Course.swift in Sources */,
+				9ECF1E3E243C8EB30062C379 /* Extentions.swift in Sources */,
 				9E55141B23AB580300D5D9E7 /* ImageViewController.swift in Sources */,
+				9E4A6871243B8A29007FBFBF /* LoginViewController.swift in Sources */,
 				9EF3873E23ACEA60007FD21D /* WebViewController.swift in Sources */,
 				9E55141723AB580300D5D9E7 /* AppDelegate.swift in Sources */,
-				9E55141923AB580300D5D9E7 /* SceneDelegate.swift in Sources */,
+				9ECF1E42243CD2400062C379 /* UserProfileVC.swift in Sources */,
 				9EF3874423AD27E4007FD21D /* WebSiteDescription.swift in Sources */,
 				9EA1461F243498BC002A8AF6 /* AlamofireNetworkRequest.swift in Sources */,
 				9EF3874023ACEB9C007FD21D /* TableViewCell.swift in Sources */,
@@ -460,6 +487,7 @@
 			baseConfigurationReference = F3D3EA933F1CF69A6BB32474 /* Pods-test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NetirkingRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WJR74JV9LN;
 				INFOPLIST_FILE = "$(SRCROOT)/Networking/Info.plist";

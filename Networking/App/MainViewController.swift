@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import FBSDKLoginKit
 
 enum Actions: String, CaseIterable {
     
@@ -51,6 +52,8 @@ class MainViewController: UICollectionViewController {
             self.alert.dismiss(animated: false, completion: nil)
             self.postNotification()
         }
+        
+        checkLoggedIn()
     }
     
     private func showAlert() {
@@ -58,12 +61,12 @@ class MainViewController: UICollectionViewController {
         alert = UIAlertController(title: "Downloading...", message: "0%", preferredStyle: .alert)
         
         let height = NSLayoutConstraint(item: alert.view,
-                                       attribute: .height,
-                                       relatedBy: .equal,
-                                       toItem: nil,
-                                       attribute: .notAnAttribute,
-                                       multiplier: 0,
-                                       constant: 170)
+                                        attribute: .height,
+                                        relatedBy: .equal,
+                                        toItem: nil,
+                                        attribute: .notAnAttribute,
+                                        multiplier: 0,
+                                        constant: 170)
         
         alert.view.addConstraint(height)
         
@@ -99,24 +102,24 @@ class MainViewController: UICollectionViewController {
             self.alert.view.addSubview(progressView)
         }
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return actions.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
-    
+        
         cell.label.text = actions[indexPath.row].rawValue
-    
+        
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let action = actions[indexPath.row]
@@ -150,7 +153,6 @@ class MainViewController: UICollectionViewController {
             performSegue(withIdentifier: "postRequest", sender: self)
         case .putRequest:
             performSegue(withIdentifier: "putRequest", sender: self)
-            
         }
     }
     
@@ -199,5 +201,22 @@ extension MainViewController {
         
         let request = UNNotificationRequest(identifier: "TransferComplete", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+}
+
+// MARK: Facebook SDK
+
+extension MainViewController {
+    private func checkLoggedIn() {
+        
+        if !(AccessToken.isCurrentAccessTokenActive) {
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true)
+                return
+            }
+        }
     }
 }
