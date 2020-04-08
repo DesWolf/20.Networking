@@ -144,19 +144,28 @@
                                     <constraint firstAttribute="width" constant="288" id="xRQ-8q-fhj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bxK-hr-axk">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="bxK-hr-axk" firstAttribute="centerX" secondItem="v1S-pq-YOg" secondAttribute="centerX" id="G49-dA-kRm"/>
                             <constraint firstItem="5PN-JC-rbF" firstAttribute="centerX" secondItem="v1S-pq-YOg" secondAttribute="centerX" id="OHc-6A-rxv"/>
+                            <constraint firstItem="bxK-hr-axk" firstAttribute="centerY" secondItem="v1S-pq-YOg" secondAttribute="centerY" id="Oax-HQ-ZQ2"/>
                             <constraint firstItem="5PN-JC-rbF" firstAttribute="top" secondItem="j2N-Rv-ouM" secondAttribute="top" constant="76" id="c22-Wq-5qd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j2N-Rv-ouM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" systemItem="contacts" id="CIE-qV-Q6y"/>
                     <navigationItem key="navigationItem" id="lak-sN-v92"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="bxK-hr-axk" id="cUh-SX-Fld"/>
+                        <outlet property="userNameLabel" destination="5PN-JC-rbF" id="mMj-6a-PXv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPM-4B-f0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,6 +377,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="k6m-k9-57j" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dvp-yA-ZfT">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
