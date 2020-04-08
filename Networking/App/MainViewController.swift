@@ -61,7 +61,7 @@ class MainViewController: UICollectionViewController {
         
         alert = UIAlertController(title: "Downloading...", message: "0%", preferredStyle: .alert)
         
-        let height = NSLayoutConstraint(item: alert.view,
+        let height = NSLayoutConstraint(item: alert.view ?? "",
                                         attribute: .height,
                                         relatedBy: .equal,
                                         toItem: nil,

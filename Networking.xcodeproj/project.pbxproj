@@ -18,6 +18,7 @@
 		9ECF1E3E243C8EB30062C379 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF1E3D243C8EB30062C379 /* Extentions.swift */; };
 		9ECF1E42243CD2400062C379 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF1E41243CD2400062C379 /* UserProfileVC.swift */; };
 		9ECF1E48243CF6900062C379 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ECF1E47243CF6900062C379 /* GoogleService-Info.plist */; };
+		9ECF1E4A243DC2880062C379 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF1E49243DC2880062C379 /* Profile.swift */; };
 		9EE1283B2420C19E009F32DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1283A2420C19E009F32DC /* MainViewController.swift */; };
 		9EE1283D2420C27E009F32DC /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1283C2420C27E009F32DC /* CollectionViewCell.swift */; };
 		9EE128442420D2BF009F32DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE128432420D2BF009F32DC /* NetworkManager.swift */; };
@@ -47,6 +48,7 @@
 		9ECF1E3D243C8EB30062C379 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		9ECF1E41243CD2400062C379 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		9ECF1E47243CF6900062C379 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9ECF1E49243DC2880062C379 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		9EE1283A2420C19E009F32DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9EE1283C2420C27E009F32DC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9EE128432420D2BF009F32DC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				9E4A6870243B8A29007FBFBF /* LoginViewController.swift */,
 				9ECF1E41243CD2400062C379 /* UserProfileVC.swift */,
+				9ECF1E49243DC2880062C379 /* Profile.swift */,
 			);
 			name = FBUserAutorization;
 			path = App;
@@ -312,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECF1E4A243DC2880062C379 /* Profile.swift in Sources */,
 				9EE128442420D2BF009F32DC /* NetworkManager.swift in Sources */,
 				9EF3874223ACF381007FD21D /* Course.swift in Sources */,
 				9ECF1E3E243C8EB30062C379 /* Extentions.swift in Sources */,

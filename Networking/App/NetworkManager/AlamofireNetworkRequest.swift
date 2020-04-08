@@ -81,7 +81,7 @@ class AlamofireNetworkRequest {
             print("TotalUnitCount: ", progress.totalUnitCount)
             print("CompletedUnitCount: ", progress.completedUnitCount)
             print("FractionCompleted: ", progress.fractionCompleted)
-            print("LocalizedDescription: ", progress.localizedDescription)
+            print("LocalizedDescription: ", progress.localizedDescription ?? "")
             print("------------------------------------------")
             self.onProgress?(progress.fractionCompleted)
             self.completed?(progress.localizedDescription)

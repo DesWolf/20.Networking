@@ -9,8 +9,11 @@
 import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
+    
+    var userProfile: UserProfile?
     
     lazy var fbLoginButton: UIButton = {
         let loginButton = FBLoginButton()
@@ -30,7 +33,7 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
         return loginButton
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
@@ -47,25 +50,24 @@ class LoginViewController: UIViewController {
         view.addSubview(fbLoginButton)
         view.addSubview(customFBLoginButton)
     }
-
+    
 }
 // MARK: FACEBOOK SDK
 extension LoginViewController: LoginButtonDelegate {
     
-    func loginButton(_ loginButton: FBLoginButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
         if error != nil {
-            print(error)
+            print(error ?? "")
             return
         }
         
         guard AccessToken.isCurrentAccessTokenActive else { return }
-        openMainViewController()
-        
         print("Successfully logged in with facebook...")
+        signIntoFireBase()
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("Did log out of facebook")
     }
     private func openMainViewController() {
@@ -81,21 +83,50 @@ extension LoginViewController: LoginButtonDelegate {
             if result.isCancelled { return }
             else {
                 self.signIntoFireBase()
-                self.openMainViewController()
             }
         }
     }
-        private func signIntoFireBase() {
-            let accessToken = AccessToken.current
-            guard let accessTokenString = accessToken?.tokenString else { return }
-            let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+    private func signIntoFireBase() {
+        let accessToken = AccessToken.current
+        guard let accessTokenString = accessToken?.tokenString else { return }
+        let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            if let error = error {
+                print("Something went wrong with our facebook user: ", error)
+                return
+            }
+            print("Sucsessfuly logged in with our FB user")
+            self.fetchFacebookFields()
+        }
+    }
+    
+    private func fetchFacebookFields() {
+        GraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"]).start { (_, result, error) in
+            if let error = error {
+                print(error)
+            }
             
-            Auth.auth().signIn(with: credentials) { (user, error) in
-                if let error = error {
-                    print("Something went wrong with our facebook user: ", error)
-                    return
-                }
-                print("Sucsessfuly logged in with our FB user: ", user!)
+            if let userData = result as? [String: Any] {
+                self.userProfile = UserProfile(data: userData)
+                print(self.userProfile?.name ?? "nil")
+                self.saveIntoFirebase()
             }
         }
+    }
+    
+    private func saveIntoFirebase() {
+
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userData = ["name" : userProfile?.name, "email": userProfile?.email]
+        let values = [uid: userData]
+        Database.database().reference().child("users").updateChildValues(values) { (error, _) in
+            if let error = error {
+                print( error)
+                return
+            }
+            print("Successfully saved user into firebase database")
+            self.openMainViewController()
+        }
+    }
 }

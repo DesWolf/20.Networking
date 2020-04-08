@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            
         let appId = Settings.appID
            
-           if url.scheme != nil && url.scheme!.hasPrefix("fb\(appId)") && url.host ==  "authorize" {
+        if url.scheme != nil && url.scheme!.hasPrefix("fb\(String(describing: appId))") && url.host ==  "authorize" {
             return ApplicationDelegate.shared.application(app, open: url, options: options)
            }
            

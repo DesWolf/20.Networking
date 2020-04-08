@@ -18,7 +18,7 @@ class UserProfileVC: UIViewController{
         loginButton.delegate = self
         return loginButton
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,35 +35,35 @@ class UserProfileVC: UIViewController{
     private func setupViews(){
         view.addSubview(fbLoginButton)
     }
-
-//MARK: FACEBOOK SDK
 }
+//MARK: FACEBOOK SDK
 extension UserProfileVC: LoginButtonDelegate {
-   func loginButton(_ loginButton: FBLoginButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
         if error != nil {
-            print(error)
+            print(error ?? "")
             return
         }
         print("Successfully logged in with facebook...")
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("Did log out of facebook")
         openLoginViewController()
     }
     private func openLoginViewController() {
         do {
             try Auth.auth().signOut()
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                    loginVC.modalPresentationStyle = .fullScreen
-                    self.present(loginVC, animated: true)
-                    return
-                }
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true)
+                return
+            }
         } catch let error {
             print("Failed to sign out with error: ", error.localizedDescription)
         }
     }
 }
+
