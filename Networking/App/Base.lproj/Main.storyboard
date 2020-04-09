@@ -348,7 +348,7 @@
                         <viewLayoutGuide key="safeArea" id="8W1-hb-6aW"/>
                     </view>
                     <connections>
-                        <segue destination="6YW-lG-jew" kind="push" identifier="SignIn" id="fdx-F4-hqr"/>
+                        <segue destination="6YW-lG-jew" kind="show" identifier="SignIn" id="fdx-F4-hqr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0W-Fi-cGd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
