@@ -42,13 +42,35 @@ class LoginViewController: UIViewController {
         return loginButton
     }()
     
+    lazy var customLoginButton: UIButton = {
+        let loginButton = UIButton()
+        loginButton.frame = CGRect(x: 32, y: 360 + 80 + 80 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.backgroundColor = .white
+        loginButton.setTitle("Login with Google", for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        loginButton.setTitleColor(.gray, for: .normal)
+        loginButton.layer.cornerRadius = 4
+        loginButton.addTarget(self, action: #selector(handleCustomGoogleLogin), for: .touchUpInside)
+        return loginButton
+    }()
+    
+    lazy var signInWithEmail: UIButton = {
+        let signButton = UIButton()
+        signButton.frame = CGRect(x: 32, y: 360 + 80 + 80 + 80 + 80, width: view.frame.width - 64, height: 50)
+        signButton.setTitle("Sign In with Email", for: .normal)
+        signButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        signButton.setTitleColor(.gray, for: .normal)
+        signButton.addTarget(self, action: #selector(openSignInVC), for: .touchUpInside)
+        return signButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         setupViews()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-//        GIDSignIn.sharedInstance().signIn()
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -61,6 +83,8 @@ class LoginViewController: UIViewController {
         view.addSubview(fbLoginButton)
         view.addSubview(customFBLoginButton)
         view.addSubview(googleLoginButton)
+        view.addSubview(customLoginButton)
+        view.addSubview(signInWithEmail)
     }
     
 }
@@ -84,6 +108,10 @@ extension LoginViewController: LoginButtonDelegate {
     }
     private func openMainViewController() {
         dismiss(animated: true)
+    }
+    
+    @objc private func openSignInVC() {
+        performSegue(withIdentifier: "SignIn", sender: self)
     }
     
     @objc private func handleCustomFBLogin() {
@@ -128,7 +156,7 @@ extension LoginViewController: LoginButtonDelegate {
     }
     
     private func saveIntoFirebase() {
-
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let userData = ["name" : userProfile?.name, "email": userProfile?.email]
         let values = [uid: userData]
@@ -151,16 +179,26 @@ extension LoginViewController: GIDSignInDelegate  {
             return
         }
         print("Successfuly loged into Google")
+        
+        if let userName = user.profile.name, let userEmail = user.profile.email {
+            let userData = ["name": userName, "email": userEmail]
+            userProfile = UserProfile(data: userData)
+        }
+        
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                           accessToken: authentication.accessToken)
+                                                       accessToken: authentication.accessToken)
         Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
             if let error = error {
                 print("Something went wrong with our Google user: ", error)
                 return
             }
             print("Successfully logged into FireBase with Google")
-            self.openMainViewController()
+            self.saveIntoFirebase()
         }
+    }
+    
+    @objc private func handleCustomGoogleLogin() {
+        GIDSignIn.sharedInstance()?.signIn()
     }
 }
