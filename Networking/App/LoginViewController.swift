@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
         signButton.frame = CGRect(x: 32, y: 360 + 80 + 80 + 80 + 80, width: view.frame.width - 64, height: 50)
         signButton.setTitle("Sign In with Email", for: .normal)
         signButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        signButton.setTitleColor(.gray, for: .normal)
+        signButton.setTitleColor(.white, for: .normal)
         signButton.addTarget(self, action: #selector(openSignInVC), for: .touchUpInside)
         return signButton
     }()
@@ -174,7 +174,7 @@ extension LoginViewController: LoginButtonDelegate {
 //MARK: Google SDK
 extension LoginViewController: GIDSignInDelegate  {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
+        if error != nil {
             print("Faild to log into Google")
             return
         }
@@ -188,7 +188,8 @@ extension LoginViewController: GIDSignInDelegate  {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
                 print("Something went wrong with our Google user: ", error)
                 return

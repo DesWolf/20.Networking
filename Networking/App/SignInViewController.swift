@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class SignInViewController: UIViewController {
+    
+    var activityIndicator: UIActivityIndicatorView!
     
     lazy var continueButton: UIButton = {
         let button = UIButton()
@@ -33,6 +37,13 @@ class SignInViewController: UIViewController {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         view.addSubview(continueButton)
         setContinueButton(enabled: false)
+        
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = secondaryColor
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = continueButton.center
+        
+        view.addSubview(activityIndicator)
         
         emailTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
@@ -65,6 +76,7 @@ class SignInViewController: UIViewController {
         
         continueButton.center = CGPoint(x: view.center.x,
                                         y: view.frame.height - keyboardFrame.height - 16.0 - continueButton.frame.height / 2)
+        activityIndicator.center = continueButton.center
     }
     
     private func setContinueButton(enabled: Bool) {
@@ -89,8 +101,28 @@ class SignInViewController: UIViewController {
         
         setContinueButton(enabled: formFilled)
     }
-
+    
     @objc private func handleSignIn() {
+        setContinueButton(enabled: false)
+        continueButton.setTitle("", for: .normal)
+        activityIndicator.startAnimating()
         
+        guard
+            let email = emailTextField.text,
+            let password = passwordTextField.text
+            else {return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.setContinueButton(enabled: false)
+                self.continueButton.setTitle("Continue", for: .normal)
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            print("Successfully logged in with Email")
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true
+            , completion: nil)
+        }
     }
 }
