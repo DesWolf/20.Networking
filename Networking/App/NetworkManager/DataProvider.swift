@@ -35,7 +35,7 @@ class DataProvider: NSObject {
     func stopDownload() {
         downloadTask.cancel()
     }
-
+    
 }
 
 extension DataProvider: URLSessionDelegate {
@@ -54,9 +54,7 @@ extension DataProvider: URLSessionDelegate {
 }
 
 extension DataProvider: URLSessionDownloadDelegate {
-    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
         print("Did finish downloading: \(location.absoluteString)")
         
         DispatchQueue.main.async {
@@ -69,9 +67,7 @@ extension DataProvider: URLSessionDownloadDelegate {
                     didWriteData bytesWritten: Int64,
                     totalBytesWritten: Int64,
                     totalBytesExpectedToWrite: Int64) {
-        
         guard totalBytesExpectedToWrite != NSURLSessionTransferSizeUnknown else { return }
-        
         let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
         print("Download progress: \(progress)")
         

@@ -22,7 +22,6 @@ class AlamofireNetworkRequest {
                 var courses = [Course]()
                 courses = Course.getArray(from: value)!
                 completion(courses)
-                
             case .failure(let error):
                 print(error)
             }
@@ -145,5 +144,4 @@ class AlamofireNetworkRequest {
             }
         }
     }
-    
 }

@@ -37,14 +37,11 @@ class SignInViewController: UIViewController {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         view.addSubview(continueButton)
         setContinueButton(enabled: false)
-        
         activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.color = secondaryColor
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         activityIndicator.center = continueButton.center
-        
         view.addSubview(activityIndicator)
-        
         emailTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
@@ -56,7 +53,6 @@ class SignInViewController: UIViewController {
                                                selector:#selector(keyboardWillAppear),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -73,14 +69,12 @@ class SignInViewController: UIViewController {
         
         let userInfo = notification.userInfo!
         let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
         continueButton.center = CGPoint(x: view.center.x,
                                         y: view.frame.height - keyboardFrame.height - 16.0 - continueButton.frame.height / 2)
         activityIndicator.center = continueButton.center
     }
     
     private func setContinueButton(enabled: Bool) {
-        
         if enabled {
             continueButton.alpha = 1.0
             continueButton.isEnabled = true
@@ -91,14 +85,11 @@ class SignInViewController: UIViewController {
     }
     
     @objc private func textFieldChanged() {
-        
         guard
             let email = emailTextField.text,
             let password = passwordTextField.text
             else { return }
-        
         let formFilled = !(email.isEmpty) && !(password.isEmpty)
-        
         setContinueButton(enabled: formFilled)
     }
     
@@ -106,7 +97,6 @@ class SignInViewController: UIViewController {
         setContinueButton(enabled: false)
         continueButton.setTitle("", for: .normal)
         activityIndicator.startAnimating()
-        
         guard
             let email = emailTextField.text,
             let password = passwordTextField.text

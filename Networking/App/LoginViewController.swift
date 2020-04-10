@@ -70,7 +70,6 @@ class LoginViewController: UIViewController {
         setupViews()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -86,18 +85,16 @@ class LoginViewController: UIViewController {
         view.addSubview(customLoginButton)
         view.addSubview(signInWithEmail)
     }
-    
 }
+
 // MARK: FACEBOOK SDK
 extension LoginViewController: LoginButtonDelegate {
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        
         if error != nil {
             print(error ?? "")
             return
         }
-        
         guard AccessToken.isCurrentAccessTokenActive else { return }
         print("Successfully logged in with facebook...")
         signIntoFireBase()
@@ -146,7 +143,6 @@ extension LoginViewController: LoginButtonDelegate {
             if let error = error {
                 print(error)
             }
-            
             if let userData = result as? [String: Any] {
                 self.userProfile = UserProfile(data: userData)
                 print(self.userProfile?.name ?? "nil")
@@ -156,7 +152,6 @@ extension LoginViewController: LoginButtonDelegate {
     }
     
     private func saveIntoFirebase() {
-        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let userData = ["name" : userProfile?.name, "email": userProfile?.email]
         let values = [uid: userData]
@@ -184,7 +179,6 @@ extension LoginViewController: GIDSignInDelegate  {
             let userData = ["name": userName, "email": userEmail]
             userProfile = UserProfile(data: userData)
         }
-        
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)

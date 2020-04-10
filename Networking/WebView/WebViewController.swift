@@ -32,7 +32,6 @@ class WebViewController: UIViewController {
                             forKeyPath: #keyPath(WKWebView.estimatedProgress),
                             options: .new,
                             context: nil)
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?,
@@ -60,7 +59,6 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: WKNavigationDelegate {
-    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         showProgressView()
     }

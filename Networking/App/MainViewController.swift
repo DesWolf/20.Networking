@@ -69,7 +69,6 @@ class MainViewController: UICollectionViewController {
         alert.view.addConstraint(height)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
-            
             self.dataProvider.stopDownload()
         }
         
@@ -91,11 +90,9 @@ class MainViewController: UICollectionViewController {
             progressView.tintColor = .blue
             
             self.dataProvider.onProgress = { (progress) in
-                
                 progressView.progress = Float(progress)
                 self.alert.message = String(Int(progress * 100)) + "%"
             }
-            
             self.alert.view.addSubview(activityIndicator)
             self.alert.view.addSubview(progressView)
         }
@@ -108,11 +105,8 @@ class MainViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
-        
         cell.label.text = actions[indexPath.row].rawValue
-        
         return cell
     }
     
@@ -185,7 +179,6 @@ extension MainViewController {
     
     private func registerForNotification() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (_, _) in
-            
         }
     }
     
@@ -196,7 +189,6 @@ extension MainViewController {
         content.body = "Your background transfer has completed. File path: \(filePath!)"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-        
         let request = UNNotificationRequest(identifier: "TransferComplete", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
