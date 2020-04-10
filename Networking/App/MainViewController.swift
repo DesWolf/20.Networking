@@ -44,7 +44,6 @@ class MainViewController: UICollectionViewController {
         super.viewDidLoad()
         
         registerForNotification()
-        
         dataProvider.fileLocation = { (location) in
             
             // Сохранить файл для дальнейшего использования
@@ -53,14 +52,12 @@ class MainViewController: UICollectionViewController {
             self.alert.dismiss(animated: false, completion: nil)
             self.postNotification()
         }
-        
         checkLoggedIn()
     }
     
     private func showAlert() {
         
         alert = UIAlertController(title: "Downloading...", message: "0%", preferredStyle: .alert)
-        
         let height = NSLayoutConstraint(item: alert.view ?? "",
                                         attribute: .height,
                                         relatedBy: .equal,
